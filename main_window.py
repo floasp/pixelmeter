@@ -14,7 +14,7 @@ from PySide6.QtWidgets import (
     QFrame,
     QLabel
 )
-from ui.frames.frame_control import ControlFrame
+from ui.frames.frame_control import ControlLayout
 from ui.frames.frame_image import ImageFrame
 
 class MainWindow(QMainWindow):
@@ -24,7 +24,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("My App")
         
         main_layout = QHBoxLayout()
-        main_layout.addWidget(ControlFrame())
+        main_layout.addLayout(ControlLayout())
         main_layout.addWidget(ImageFrame())
         
         widget = QWidget()

@@ -13,20 +13,20 @@ from PySide6.QtWidgets import (
 )
 from ui.frames.frame_expandable import ExpandableFrame
 
-class ControlFrame(QFrame):
+class ControlLayout(QVBoxLayout):
     
     def __init__(self):
         super().__init__()
-        self.setFrameStyle(QFrame.Panel | QFrame.Raised)
-        self.setLineWidth(2);
+        # self.setFrameStyle(QFrame.Panel | QFrame.Raised)
+        # self.setLineWidth(2);
         
-        self.layout = QVBoxLayout()
+        # self.layout = QVBoxLayout()
         
-        self.load_ref()
-        self.load_add()
-        self.load_properties()
+        self.ref_frame = self.load_ref()
+        self.add_frame = self.load_add()
+        self.pro_frame = self.load_properties()
         
-        self.setLayout(self.layout)
+        # self.setLayout(self.layout)
         
     def load_ref(self):
         frame = ExpandableFrame("reference")
@@ -39,7 +39,7 @@ class ControlFrame(QFrame):
         button.setText("test")
         frame.layout.addWidget(button)
         
-        self.layout.addWidget(frame)
+        self.addWidget(frame)
         
         return frame
     
@@ -54,7 +54,9 @@ class ControlFrame(QFrame):
         button.setText("test1")
         frame.layout.addWidget(button)
         
-        self.layout.addWidget(frame)
+        self.addWidget(frame)
+        
+        return frame
     
     def load_properties(self):
         pass

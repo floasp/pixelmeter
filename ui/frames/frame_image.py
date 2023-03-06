@@ -30,6 +30,7 @@ class ImageFrame(QFrame):
         self.image_lbl.setPixmap(image)
         self.layout.addWidget(self.image_lbl)
         
+        self.image_lbl.setAlignment(Qt.AlignCenter)
         self.setLayout(self.layout)
         
         

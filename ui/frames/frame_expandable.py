@@ -16,12 +16,8 @@ class ExpandableFrame(QFrame):
     
     def __init__(self, title):
         super().__init__()
-        
-        p = self.palette()
-        # p.setColor(self.backgroundRole(), QPalette.Window)
-        p.setColor(self.backgroundRole(), QColor('#FFAABBCC'))
-        self.setPalette(p)
-        # self.setStyleSheet('QFrame { background-color:Window; }')
+        self.setFrameStyle(QFrame.Panel | QFrame.Raised)
+        self.setLineWidth(2);
         
         self.layout = QVBoxLayout()
         
