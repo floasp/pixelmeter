@@ -1,5 +1,5 @@
 """
-    Main method, starts the welcome window.
+    Main method, starts the main window.
 """
 from main_window import MainWindow
 from PySide6.QtWidgets import QApplication

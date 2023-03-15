@@ -21,7 +21,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("My App")
+        self.setWindowTitle("Pixelmeter")
         
         main_layout = QHBoxLayout()
         main_layout.addLayout(ControlLayout())
@@ -35,15 +35,9 @@ class MainWindow(QMainWindow):
         # Set the central widget of the Window.
         # self.setCentralWidget(button)
         
-    def the_button_was_clicked(self):
-        print("Clicked!")
-
-    def the_button_was_toggled(self, checked):
-        print("Checked?", checked)
-
-    def contextMenuEvent(self, e):
-        context = QMenu(self)
-        context.addAction(QAction("test 1", self))
-        context.addAction(QAction("test 2", self))
-        context.addAction(QAction("test 3", self))
-        context.exec_(e.globalPos())
+    # def contextMenuEvent(self, e):
+    #     context = QMenu(self)
+    #     context.addAction(QAction("test 1", self))
+    #     context.addAction(QAction("test 2", self))
+    #     context.addAction(QAction("test 3", self))
+    #     context.exec_(e.globalPos())

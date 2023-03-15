@@ -1,4 +1,9 @@
-from PySide6.QtGui import QAction
+from PySide6.QtCore import Qt
+from PySide6.QtGui import (
+    QAction, 
+    QIntValidator, 
+    QDoubleValidator, 
+    QFont)
 from PySide6.QtWidgets import (
     QApplication, 
     QWidget, 
@@ -9,7 +14,11 @@ from PySide6.QtWidgets import (
     QHBoxLayout,
     QFrame,
     QVBoxLayout,
-    QPushButton
+    QPushButton,
+    QGridLayout,
+    QSizePolicy,
+    QLineEdit,
+    QRadioButton
 )
 from ui.frames.frame_expandable import ExpandableFrame
 
@@ -31,13 +40,46 @@ class ControlLayout(QVBoxLayout):
     def load_ref(self):
         frame = ExpandableFrame("reference")
         
-        title = QLabel()
-        title.setText("test")
-        frame.layout.addWidget(title)
+        grid = QGridLayout()
+        grid.setAlignment(Qt.AlignTop)
         
-        button = QPushButton()
-        button.setText("test")
-        frame.layout.addWidget(button)
+        origin_lbl = QLabel("origin:")
+        x_l_lbl = QLabel("x length:")
+        y_l_lbl = QLabel("y length:")
+        # type_lbl = QLabel("type:")
+        # persp_lbl = QLabel("perspective:")
+        
+        px_lbl = QLabel("px")
+        origin_px_lbl = QLabel("x,y")
+        x_l_px_lbl = QLabel("xx")
+        y_l_px_lbl = QLabel("yy")
+        
+        mm_lbl = QLabel("mm")
+        x_l_mm_txt = QLineEdit("xx")
+        x_l_mm_txt.setValidator(QDoubleValidator(0.99,99.99,5))
+        y_l_mm_txt = QLineEdit("yy")
+        y_l_mm_txt.setValidator(QDoubleValidator(0.99,99.99,5))
+        
+        
+        grid.addWidget(origin_lbl, 1, 0)
+        grid.addWidget(x_l_lbl, 2, 0)
+        grid.addWidget(y_l_lbl, 3, 0)
+        # grid.addWidget(type_lbl, 4, 0)
+        # grid.addWidget(persp_lbl, 5, 0)
+        
+        grid.addWidget(px_lbl, 0, 1)
+        grid.addWidget(origin_px_lbl, 1, 1)
+        grid.addWidget(x_l_px_lbl, 2, 1)
+        grid.addWidget(y_l_px_lbl, 3, 1)
+        
+        grid.addWidget(mm_lbl, 0, 2)
+        grid.addWidget(x_l_mm_txt, 2, 2)
+        grid.addWidget(y_l_mm_txt, 3, 2)
+        
+        spacer = QLabel()
+        spacer.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
+        grid.addWidget(spacer, grid.rowCount(), 0)
+        frame.layout.addLayout(grid)
         
         self.addWidget(frame)
         
@@ -46,20 +88,31 @@ class ControlLayout(QVBoxLayout):
     def load_add(self):
         frame = ExpandableFrame("add")
         
+        grid = QGridLayout()
+        grid.setAlignment(Qt.AlignTop)
+        
         title = QLabel()
         title.setText("test1")
-        frame.layout.addWidget(title)
         
         button = QPushButton()
         button.setText("test1")
-        frame.layout.addWidget(button)
+        
+        grid.addWidget(title, 0, 0)
+        grid.addWidget(button, 1, 0)
+        
+        spacer = QLabel()
+        spacer.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
+        grid.addWidget(spacer, grid.rowCount(), 0)
+        frame.layout.addLayout(grid)
         
         self.addWidget(frame)
-        
         return frame
     
     def load_properties(self):
-        pass
+        frame = ExpandableFrame("properties")
+        
+        self.addWidget(frame)
+        return frame
         
         
         

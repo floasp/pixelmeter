@@ -23,7 +23,7 @@ class ExpandableFrame(QFrame):
         
         self.title_lbl = QLabel()
         self.title_lbl.setText(title)
-        self.title_lbl.setAlignment(Qt.AlignTop)
+        # self.title_lbl.setAlignment(Qt.AlignTop)
         self.layout.addWidget(self.title_lbl)
         
         self.setLayout(self.layout)
